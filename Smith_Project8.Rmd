@@ -244,7 +244,6 @@ naive_fit
 
 ## LTMLE estimate
 
-# Specifying the node names correctly as character vectors
 A1 <- "blood_pressure_medication"
 A2 <- "blood_pressure_medication_2"
 L <- c("bmi_2", "chol_2", "blood_pressure_2")
@@ -256,11 +255,11 @@ sl_libs <- c("SL.glm", "SL.glmnet")
 
 # Fitting the LTMLE model
 ltmle_fit <- ltmle(data = heart_disease, 
-                   Anodes = c("A1", "A2"),  # Using variables directly
+                   Anodes = c("A1", "A2"),  
                    Lnodes = "L",
                    Ynodes = "Y",
-                   W = W,  # This replaces cnodes
-                   abar = list(1, 1),  # Treatment regime
+                   cnodes = "W",  
+                   abar = list(1, 1),  
                    SL.library = sl_libs,
                    gform = list("blood_pressure_medication ~ age + sex_at_birth + simplified_race + income_thousands + college_educ + bmi + blood_pressure + chol", 
                                 "blood_pressure_medication_2 ~ age + sex_at_birth + simplified_race + income_thousands + college_educ + bmi_2 + blood_pressure_2 + chol_2 + blood_pressure_medication"),
